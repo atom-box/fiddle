@@ -24,6 +24,28 @@ try:
 except:
 	print('Whoopsies...no file found!')
 	sys.exit()
+
+furrow = ""
+countRead = 0
+countWrite = 0
+#read and write
+while True:
+	furrow = fin.readline()
+
+	if ( '' == furrow ):
+		break
+	countRead += 1
+	countWrite += 1
+	fout.write(furrow)
+
+
+print( "Read ", countRead, " lines." )
+print( "Wrote ", countWrite, " lines." )
+
 fout.close()
 fin.close()
 print ('Succesfully opened ', fin.name )
+
+# make the file read a line, then write that line
+#  create the regex MACHINE
+#  todo  syntax for a boolean 'line contains' 
