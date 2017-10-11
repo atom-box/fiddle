@@ -32,19 +32,19 @@ except:
 furrow = "" # holds 'a row' of file line.  Get it?
 countRead = 0
 countWrite = 0
-# make the regEx 
+soughtWord = sys.argv[2]
+shiboleth = re.compile(soughtWord) # make the regEx 
 # The above regEx will test the line
 
-#read lines from the file
+#read lines from the file, check vs RegEx ('SHIBOLETH'), then write to FOUT
 while True:
 	furrow = fin.readline()
 	if ( '' == furrow ):
 		break
 	countRead += 1
-
-	countWrite += 1
-	fout.write(furrow)
-
+	if ( shiboleth.search(furrow) ): 
+		countWrite += 1
+		fout.write(furrow)
 
 print( "Read ", countRead, " lines." )
 print( "Wrote ", countWrite, " lines." )
