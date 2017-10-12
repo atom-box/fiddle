@@ -55,6 +55,6 @@ print ('Succesfully opened ', fin.name )
 
 
 #  TO DO LIST:
-# make the file read a line, then write that line
-#  create the regex MACHINE
-#  todo  syntax for a boolean 'line contains' 
+#  todo  change printout order a bit
+#  todo print the outfile name
+#  todo add an example in the usage notes
