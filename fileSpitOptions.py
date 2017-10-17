@@ -8,30 +8,56 @@
 import sys 	# Allows argv? Definitely allows sys.exit
 import re # allows RegEx
 
+# This function gives a menu in response to what was
+# entered or not entered on the command line.  
+#
 def askWhichMode():
-	if ( len(sys.argv) < 2 ): # user entered not even a file name
-		print('User did not enter correct command line arguments.')
-		print('Please re-start, with correct syntax.')
-		print('Manual Mode\ncommand line syntax: PYTHON3 FILESPIT <FILENAME> <criterion word> <maximum line length wanted>')
-		print('Prompt Mode\ncommand line syntax: PYTHON3 FILESPIT <FILENAME>')
-	if ( len(sys.argv) = 2 ): # user entered not even a file name
-		
-		print('Do you wish to run with prompts (y/n)')
-
-	print('User chose ' , sys.argv[1] + ' option')
+	temp = ""
+	maxLine = ""
+	searchTerm = ""
 
 
+	if ( len(sys.argv) == 1 ): # user entered not even a file name
+		print('Please enter a file name from the command line and try again.')
+		sys.exit()
+	#  Ask for input: line size?
+	print('Reject lines longer than? (Recommended is 160.)')
+	while ( False == maxLine.isnumeric() ):
+		maxLine = input()
+		if ( False == maxLine.isnumeric()  ):
+			print("Please enter an integer")
+	print('Search term? (Lines will only be copied if they include this term.)')
+	while ( "" == searchTerm ):
+		searchTerm = input()
+		if (  "" == searchTerm   ):
+			print("Please enter a search term.")
+	
+
+	return maxLine, searchTerm
+
+	"""
+	userSays = raw_input('Enter a number: ')
+	try:
+		maxLine = int(userSays)
+	except:
+		print ("Using default; lines longer than 160 will be ignored.")
+		maxLine = 160
+	print('Enter search term that all retained lines should have.')
+	searchTerm = input()
+  return 5
+	"""	
+
+
+# declare some variables
 criticalString = ""
 biggestLineWanted = 10000
 settings = ()
-settings.push(criticalString, biggestLineWanted) # initialize with defaults
+
+
 
 # SECTION ONE - CHECK COMMAND LINE, THEN OPEN R, W FILES
 if len(sys.argv) != 4:
-	answeredWhichMode = False # initialize
-	userWantsQuit = askWhichMode() # function will ask user to confirm 'prompt mode'
-	if ( userWantsQuit ):
-		sys.exit()
+	biggestLineWanted, criticalString = askWhichMode() 
 
 fout = open ('a.txt', 'w')
 try:
