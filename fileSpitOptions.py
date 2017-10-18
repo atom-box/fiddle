@@ -11,12 +11,13 @@ import re # allows RegEx
 # This function gives a menu in response to what was
 # entered or not entered on the command line.  
 #
-def askWhichMode():
+
+
+#  FUNCTION TO GET INPUT FROM USERS THAT ENTERED NO FILE OR NO SEARCH TERM
+def asker():
 	temp = ""
 	maxLine = ""
 	searchTerm = ""
-
-
 	if ( len(sys.argv) == 1 ): # user entered not even a file name
 		print('Please enter a file name from the command line and try again.')
 		sys.exit()
@@ -31,37 +32,29 @@ def askWhichMode():
 		searchTerm = input()
 		if (  "" == searchTerm   ):
 			print("Please enter a search term.")
-	
-
 	return maxLine, searchTerm
 
-	"""
-	userSays = raw_input('Enter a number: ')
-	try:
-		maxLine = int(userSays)
-	except:
-		print ("Using default; lines longer than 160 will be ignored.")
-		maxLine = 160
-	print('Enter search term that all retained lines should have.')
-	searchTerm = input()
-  return 5
-	"""	
+
 
 
 # declare some variables
+fileToOpen = ""
 criticalString = ""
 biggestLineWanted = 10000
 settings = ()
 
 
-
 # SECTION ONE - CHECK COMMAND LINE, THEN OPEN R, W FILES
-if len(sys.argv) != 4:
-	biggestLineWanted, criticalString = askWhichMode() 
+if len(sys.argv) > 1:
+	fileToOpen = sys.argv[1]
+if len(sys.argv) > 2:
+	criticalString = sys.argv[2]
+if len(sys.argv) < 3:
+	biggestLineWanted, criticalString = asker()
 
 fout = open ('a.txt', 'w')
 try:
-	fin = open( sys.argv[1], 'r')
+	fin = open( fileToOpen, 'r')
 except:
 	print('Whoopsies...no file found!')
 	sys.exit()
@@ -73,17 +66,23 @@ except:
 furrow = "" # holds 'a row' of file line.  Get it?
 countRead = 0
 countWrite = 0
-soughtWord = sys.argv[2]
-shiboleth = re.compile(soughtWord) # make the regEx 
+shiboleth = re.compile(criticalString) # make the regEx 
 # The above regEx will test the line
 
 #read lines from the file, check vs RegEx ('SHIBOLETH'), then write to FOUT
+print("Will include any lines from file [", fileToOpen, "]")
+print("that include the search term [", criticalString, "]")
+print("and are smaller than [", biggestLineWanted, "] characters.")
+
+
 while True:
 	furrow = fin.readline()
 	if ( '' == furrow ):
 		break
 	countRead += 1
-	if ( shiboleth.search(furrow) ): 
+	if ( shiboleth.search(furrow) and
+		(len(furrow) < biggestLineWanted)
+		): 
 		countWrite += 1
 		fout.write(furrow)
 
