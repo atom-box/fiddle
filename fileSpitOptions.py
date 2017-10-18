@@ -40,7 +40,7 @@ def asker():
 # declare some variables
 fileToOpen = ""
 criticalString = ""
-biggestLineWanted = 10000
+biggestLineWanted = 300
 settings = ()
 
 
@@ -49,6 +49,8 @@ if len(sys.argv) > 1:
 	fileToOpen = sys.argv[1]
 if len(sys.argv) > 2:
 	criticalString = sys.argv[2]
+if len(sys.argv) > 3:
+	biggestLineWanted = int(sys.argv[3])
 if len(sys.argv) < 3:
 	biggestLineWanted, criticalString = asker()
 
@@ -80,11 +82,23 @@ while True:
 	if ( '' == furrow ):
 		break
 	countRead += 1
+	print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
+
+	if ( 	(len(furrow) <  biggestLineWanted )  ): 
+		countWrite += 1
+		print( "success!")
+		fout.write(furrow)
+	else:
+		print("rejection.")
+
+
+"""
 	if ( shiboleth.search(furrow) and
 		(len(furrow) < biggestLineWanted)
 		): 
 		countWrite += 1
 		fout.write(furrow)
+"""
 
 print( "Read ", countRead, " lines." )
 print( "Wrote ", countWrite, " lines." )
