@@ -5,24 +5,15 @@
 # Useage:  enter PYTHON3 FILESPITTER.PY <f8oehaje> <word that identifies which lines to keep.>
 # by Evan Genest twitter@mistergenest Oct 10, 2017
 
-import sys 	# Allows argv? Definitely allows sys.exit
-import re # allows RegEx
-
-# This function gives a menu in response to what was
-# entered or not entered on the command line.  
-#
-
-
-
-
 
 # WISH LIST: COMMAND LINE FLAG OPTION FOR LINE BY LINE CONFIRM.   
 # CONFIRM OPTION TO SHOW REGEX BEHAVIOR.  'FOUND ABC!'  'TOTAL OF XX ABC!'
 
+#  MODULES
+import sys 	# Allows argv? Definitely allows sys.exit
+import re # allows RegEx
 
-
-
-#  FUNCTION TO GET INPUT FROM USERS THAT ENTERED NO FILE OR NO SEARCH TERM
+#  FUNCTION *asker*
 def asker():
 	temp = ""
 	maxLine = ""
@@ -42,18 +33,24 @@ def asker():
 		if (  "" == searchTerm   ):
 			print("Please enter a search term.")
 	return maxLine, searchTerm
+# END ASKER FUNCTION
+#   *ASKER* GETS INPUT FROM USERS THAT ENTERED NO FILE OR NO SEARCH TERM
 
 
-
-
-# declare some variables
+# DECLARE
 fileToOpen = ""
 criticalString = ""
 biggestLineWanted = 300
 settings = ()
+showsWords = False # enter debug mode
+showsNumbers = False # enter debug mode
+# END DECLARE
 
-
-# SECTION ONE - CHECK COMMAND LINE, THEN OPEN R, W FILES
+# MAIN - CHECK COMMAND LINE, THEN OPEN R, W FILES
+if ( (len(sys.argv) >4)  and (sys.argv[4].lower() == 'w')  ):
+	showsWords = True
+if ( (len(sys.argv) >4)  and (sys.argv[4].lower() == 'n')  ):
+	showsNumbers = True
 if len(sys.argv) > 1:
 	fileToOpen = sys.argv[1]
 if len(sys.argv) > 2:
@@ -62,7 +59,6 @@ if len(sys.argv) > 3:
 	biggestLineWanted = int(sys.argv[3])
 if len(sys.argv) < 3:
 	biggestLineWanted, criticalString = asker()
-
 fout = open ('a.txt', 'w')
 try:
 	fin = open( fileToOpen, 'r')
@@ -91,14 +87,16 @@ while True:
 	if ( '' == furrow ):
 		break
 	countRead += 1
-	print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
-
-	if ( 	(len(furrow) <  biggestLineWanted )  ): 
+	if  	(len(furrow) <  int(biggestLineWanted )  ): 
 		countWrite += 1
-		print( "success!")
 		fout.write(furrow)
+		if (showsNumbers): #debug mode
+			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
+			print( "success!")
 	else:
-		print("rejection.")
+		if (showsNumbers):
+			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
+			print("rejection.")
 
 
 """
@@ -115,9 +113,15 @@ print( "Wrote ", countWrite, " lines." )
 fout.close()
 fin.close()
 print ('Succesfully opened ', fin.name )
+if ( len(sys.argv) >4):
+	print ( "Requested debug mode " , sys.argv[4] )
+
+
 
 
 #  TO DO LIST:
 #  todo  change printout order a bit
 #  todo print the outfile name
 #  todo add an example in the usage notes
+# Make generally useful by having it recognize the header and footer 
+# of std MOzilla bkmks, preserve them, and then pakcage the output as a nice static web page.
