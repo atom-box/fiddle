@@ -146,6 +146,7 @@ if ( len(sys.argv) >4):
 """
 
 #  TO DO LIST:
+#  todo: make it write a reject file 
 #  todo add an example in the usage notes
 # Make generally useful by having it recognize the header and footer 
 # of std MOzilla bkmks, preserve them, and then pakcage the output as a nice static web page.
