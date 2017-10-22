@@ -10,7 +10,7 @@
 # CONFIRM OPTION TO SHOW REGEX BEHAVIOR.  'FOUND ABC!'  'TOTAL OF XX ABC!'
 
 #  MODULES
-import sys 	# Allows argv? Definitely allows sys.exit
+import sys 	# Allows argv? DeFINitely allows sys.exit
 import re # allows RegEx
 
 #  FUNCTION *asker*
@@ -44,6 +44,8 @@ biggestLineWanted = 300
 settings = ()
 showsWords = False # enter debug mode
 showsNumbers = False # enter debug mode
+# FIN is file in
+# FOUT is file out
 # END DECLARE
 
 # MAIN - CHECK COMMAND LINE, THEN OPEN R, W FILES
@@ -59,9 +61,9 @@ if len(sys.argv) > 3:
 	biggestLineWanted = int(sys.argv[3])
 if len(sys.argv) < 3:
 	biggestLineWanted, criticalString = asker()
-fout = open ('a.txt', 'w')
+FOUT = open ('a.txt', 'w')
 try:
-	fin = open( fileToOpen, 'r')
+	FIN = open( fileToOpen, 'r')
 except:
 	print('Whoopsies...no file found!')
 	sys.exit()
@@ -81,15 +83,15 @@ print("Will include any lines from file [", fileToOpen, "]")
 print("that include the search term [", criticalString, "]")
 print("and are smaller than [", biggestLineWanted, "] characters.")
 
-
+"""     JUST CHECKS LENGTHS
 while True:
-	furrow = fin.readline()
+	furrow = FIN.readline()
 	if ( '' == furrow ):
 		break
 	countRead += 1
 	if  	(len(furrow) <  int(biggestLineWanted )  ): 
 		countWrite += 1
-		fout.write(furrow)
+		FOUT.write(furrow)
 		if (showsNumbers): #debug mode
 			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
 			print( "success!")
@@ -97,22 +99,41 @@ while True:
 		if (showsNumbers):
 			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
 			print("rejection.")
-
-
 """
+catch = ""
+
+while True:
+	furrow = FIN.readline()
+	if ( '' == furrow ):
+		break
+	countRead += 1
+	catch =  shiboleth.search( furrow )
+	if  	( bool(catch) ) and (True): # MATCH!
+		countWrite += 1
+		FOUT.write(furrow)
+		if (showsNumbers): #debug mode
+			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
+			print( "success!")
+	else:     #  NO MATCH ...
+		if (showsNumbers):
+			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
+			print("rejection.")
+
+
+
+"""  MOTHBALLED REGEX
 	if ( shiboleth.search(furrow) and
 		(len(furrow) < biggestLineWanted)
 		): 
 		countWrite += 1
-		fout.write(furrow)
+		FOUT.write(furrow)
 """
-
 print( "Read ", countRead, " lines." )
 print( "Wrote ", countWrite, " lines." )
 
-fout.close()
-fin.close()
-print ('Succesfully opened ', fin.name )
+FOUT.close()
+FIN.close()
+print ('Succesfully opened ', FIN.name )
 if ( len(sys.argv) >4):
 	print ( "Requested debug mode " , sys.argv[4] )
 
