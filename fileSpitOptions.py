@@ -100,15 +100,20 @@ while True:
 			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
 			print("rejection.")
 """
-catch = ""
+wordFound = False
+lengthOkay = False
 
 while True:
 	furrow = FIN.readline()
 	if ( '' == furrow ):
 		break
 	countRead += 1
-	catch =  shiboleth.search( furrow )
-	if  	( bool(catch) ) and (True): # MATCH!
+	lengthOkay = bool( len(furrow) < biggestLineWanted) # seems okay Sunday AM
+	wordFound = bool( shiboleth.search( furrow ) )   #seems okay Sunday AM
+
+
+
+	if  	( wordFound ) and (lengthOkay): # MATCH!
 		countWrite += 1
 		FOUT.write(furrow)
 		if (showsNumbers): #debug mode
@@ -121,28 +126,26 @@ while True:
 
 
 
-"""  MOTHBALLED REGEX
-	if ( shiboleth.search(furrow) and
-		(len(furrow) < biggestLineWanted)
-		): 
-		countWrite += 1
-		FOUT.write(furrow)
-"""
 print( "Read ", countRead, " lines." )
 print( "Wrote ", countWrite, " lines." )
 
 FOUT.close()
 FIN.close()
+print( 'Biggest line wanted was ', biggestLineWanted )
 print ('Succesfully opened ', FIN.name )
 if ( len(sys.argv) >4):
 	print ( "Requested debug mode " , sys.argv[4] )
 
-
-
+"""
+#### debug voidstar
+	print("Length was okay? ", lengthOkay)
+	print("Word was found? ", wordFound)
+	print("Peace, out.")
+	sys.exit()
+#### debug voidstar
+"""
 
 #  TO DO LIST:
-#  todo  change printout order a bit
-#  todo print the outfile name
 #  todo add an example in the usage notes
 # Make generally useful by having it recognize the header and footer 
 # of std MOzilla bkmks, preserve them, and then pakcage the output as a nice static web page.
