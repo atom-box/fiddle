@@ -7,5 +7,5 @@ fi
 SRCd="macBeth.txt"
 TGTd="./a.txt"
 echo "You're bringing $SRCd and sending it to $TGTd"
-cat $SRCd 
+cat $1 
 
