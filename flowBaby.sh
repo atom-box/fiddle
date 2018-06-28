@@ -1,11 +1,11 @@
-# Thanks, http://tldp.org/howto for the syntax help
 
 #!/bin/bash
 if [ -z "$1" ]; then
 	echo usage: $0 somefile.txt
 	exit
 fi
-SRCd=$1
+SRCd="macBeth.txt"
 TGTd="./a.txt"
-sed 's/a/-/g' SRCd > TGTd
+echo "You're bringing $SRCd and sending it to $TGTd"
+cat $SRCd 
 
