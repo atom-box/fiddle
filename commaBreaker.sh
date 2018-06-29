@@ -1,11 +1,11 @@
-# Thanks, http://tldp.org/howto for the syntax help
+# Enter a filename at commandline, this breaks the line 
+# just for commas.
+
+#  @MISTERGENEST
 
 #!/bin/bash
 if [ -z "$1" ]; then
 	echo usage: $0 somefile.txt
 	exit
 fi
-SRCd=$1
-TGTd="./a.txt"
-sed 's/a/-/g' SRCd > TGTd
-
+tr ",:;" "\n" < $1
