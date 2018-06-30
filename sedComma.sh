@@ -8,4 +8,5 @@ if [ -z "$1" ]; then
 	echo usage: $0 somefile.txt
 	exit
 fi
-tr "\(,:;!.?\)" "\1\n" < $1
+
+sed 's/\([.,:;!?]\)/\1|/g' $1  | tr "|" "\1\n" 
