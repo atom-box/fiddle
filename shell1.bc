@@ -1,6 +1,7 @@
 ###########################################
 # Compare two files, generate html output #
 # For Beyond Compare software only        #
+#  www.scootersoftware.com
 ###########################################
 
 file-report layout:side-by-side &
