@@ -1,0 +1,15 @@
+# Set up basic comparison features.
+criteria timestamp:2sec
+
+# Filter out log files.
+filter "-*.log;*.txt"
+
+# Load first comparison.
+load aaa bbb
+
+# Compare files with timestamp differences.
+select newer.files older.files
+
+# Generate a report of the differences.
+folder-report layout:summary options:display-mismatches output-to:"sriReport.txt"
+
