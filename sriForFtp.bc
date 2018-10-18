@@ -1,0 +1,24 @@
+# Script for Beyond Compare
+# Compares a directory from commandline arg
+# versus an FTP drive
+
+# Set up basic comparison features.
+criteria timestamp:2sec
+
+# Filter out log files, include text files.
+filter "-*.log;*.txt"
+
+# Load commandlineArg1 and the FTP for comparison.
+load %1 ftp://egenest@vmwebdev
+
+# Expand to affect subfolders and files. (IMPORTANT!)
+expand all
+
+# Compare files with timestamp differences.
+select newer.files older.files
+
+# Generate a report of the differences.
+folder-report layout:summary &
+ options:display-mismatches,column-attributes,column-timestamp,column-size &
+ output-to:"outfile.html" &
+output-options:html-color
