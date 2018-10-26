@@ -1,0 +1,26 @@
+# Works! Makes a whole new folder.  So sort of a merge?  I guess?
+
+option confirm:yes-to-all
+
+# Compare using crc.
+criteria crc
+
+# Load current files against snapshot from the last patch.
+load "aaa" "bbb"
+
+# Expand to affect subfolders and files.
+expand all
+
+# Select updated files.
+select left.diff.files left.orphan.files
+
+# Copy changes to an archive file.
+copyto left path:relative oot.txt
+
+
+# OBJECTIVES
+#     compare 1 local directory with a ftp directory.
+#   compare all sudirectory
+#  compare only defined extension, and ignore other one
+# get an html report
+# do all previous requirement without GUI, with commandline only
