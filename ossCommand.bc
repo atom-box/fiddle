@@ -1,0 +1,22 @@
+# Script for Beyond Compare to mirror
+
+# Turn verbose logging on.
+log verbose append:ossLog.txt
+# OPTIONAL Set the comparison criteria.
+criteria timestamp size
+# Load source and target folders.
+load %1 .\foo
+# Sync the C files to the Server 
+sync   mirror:left->right
+# Load source and target folders.
+load %2 .\bar
+# Sync the C files to the Server 
+sync   mirror:left->right
+
+#################################
+#  see also these:              #
+#                               #
+# https://www.scootersoftware.com/v4help/index.html?sample_scripts.html
+# https://www.scootersoftware.com/v4help/index.html?scripting_reference.html
+#                               #
+#################################
