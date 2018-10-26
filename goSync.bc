@@ -1,0 +1,26 @@
+# Script for Beyond Compare to mirror
+# useage: BComp.exe @./goSync.bc (with no arguments)
+# TARGETS YOU SHOULD CHANGE:  empty1, empty2
+# SOURCES YOU SHOULD CHANGE:  recipes1, recipes2
+# an optional log file: myLog.txt
+
+# Turn verbose logging on.
+log verbose append:C:\Users\egenest\horse\myLog.txt
+# OPTIONAL Set the comparison criteria.
+criteria timestamp size
+# Load source and target folders.
+load C:\Users\egenest\horse\recipes1 C:\Users\egenest\horse\empty1
+# Sync the C files to the Server 
+sync   mirror:left->right
+# Load source and target folders.
+load "C:\Users\egenest\horse\recipes2" "C:\Users\egenest\horse\empty2"
+# Sync the C files to the Server 
+sync   mirror:left->right
+
+#################################
+#  see also these:              #
+#                               #
+# https://www.scootersoftware.com/v4help/index.html?sample_scripts.html
+# https://www.scootersoftware.com/v4help/index.html?scripting_reference.html
+#                               #
+#################################
