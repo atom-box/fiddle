@@ -1,0 +1,21 @@
+# Script for Beyond Compare to 
+# accept three command line arguments
+
+
+# Turn verbose logging on. %3 is filename from CL args
+log verbose append:%3
+# OPTIONAL Set the comparison criteria.
+criteria timestamp size
+# Load source and target from CL args
+load %1 %2
+# Compare the two files 
+compare
+
+
+##########################################
+#  see also these:                       #
+#                                        #
+# https://www.scootersoftware.com/v4help/index.html?sample_scripts.html
+# https://www.scootersoftware.com/v4help/index.html?scripting_reference.html
+#                                        #
+##########################################
