@@ -1,0 +1,24 @@
+# Script for Beyond Compare
+# Input: 2 folders
+# Output: sizes of all the folders in them
+# @mistergenest November 2, 2018
+
+
+# Load the base folders.
+load %1 %2
+# Expand to affect subfolders and files.
+expand all
+# If you don't collapse, the report will have ALL folder sizes
+collapse all
+# Generate a summary report.
+folder-report 	layout:summary              &
+				options:display-all     &
+				output-to:"out-summary.txt"            
+
+#################################
+#  see more scripts at:         #
+#                               #
+# https://www.scootersoftware.com/v4help/index.html?sample_scripts.html
+# https://www.scootersoftware.com/v4help/index.html?scripting_reference.html
+#                               #
+#################################

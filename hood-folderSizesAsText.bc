@@ -1,0 +1,25 @@
+
+# Load the base folders.
+load %1 %2
+# Expand to affect subfolders and files.
+expand all
+# Now that BC has analyzed everything, close, otherwise
+#   ...otherwise it will print EVERY size
+collapse all
+# Generate a report of the differences.
+folder-report layout:side-by-side	&
+options:display-all     			&
+output-to:"outFolderSizes.txt"            
+
+#################################
+#  see more scripts at:         #
+#                               #
+# https://www.scootersoftware.com/v4help/index.html?sample_scripts.html
+# https://www.scootersoftware.com/v4help/index.html?scripting_reference.html
+#                               #
+#################################
+# Script for Beyond Compare
+# Useage: BComp.exe @hood-folderSizesAsText.bc baseFolder1 baseFolder2
+# Output: sizes of all the folders 
+# @mistergenest November 2, 2018
+#################################
