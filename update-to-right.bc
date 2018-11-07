@@ -1,0 +1,15 @@
+# Turn verbose logging on.
+log verbose append:%2
+
+# Set the comparison criteria.
+criteria timestamp size
+
+# Load source and target folders.
+load %1  "C:\My Folder"
+
+# Filter to only include source files, ignore CVS subfolders.
+filter "*.htm;*.html;*.php;*.jpg;*.gif;-CVS\"
+
+# Sync the local files to the web site, creating empty folders.
+sync create-empty update:left->right
+
