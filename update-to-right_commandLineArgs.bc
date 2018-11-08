@@ -2,13 +2,13 @@
 option confirm:yes-to-all
 
 #Print a log that has every copying event, not just a summary
-log verbose "out.txt"
+log verbose "out2.txt"
 
 # Set the comparison criteria.
 criteria timestamp size
 
 # Load source and target folders.
-load "C:\Users\egenest\chalk\recipes1"  "C:\Users\egenest\chalk\recipes3"
+load  %1   %2
 
 # Sync the local files to the web site, creating empty folders.
 sync create-empty update:left->right
