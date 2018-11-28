@@ -1,1 +1,4 @@
-data-report layout:interleaved output-to:rub.out %1 %2
+data-report &
+	layout:interleaved &
+	output-to:wipe.out &
+	"tigers1.csv <--> tigers2.csv"
