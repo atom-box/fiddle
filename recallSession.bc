@@ -9,4 +9,4 @@ data-report &
 	layout:side-by-side &
 	options:display-mismatches &
 	output-to:%3  &
-%1 %2
+	%1 %2
