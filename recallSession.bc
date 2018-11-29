@@ -1,4 +1,12 @@
+
+
+
+
+
+
+
 data-report &
-	layout:interleaved &
-	output-to:wipe.out &
-	"tigers1.csv <--> tigers2.csv"
+	layout:side-by-side &
+	options:display-mismatches &
+	output-to:%3  &
+%1 %2
