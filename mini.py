@@ -2,6 +2,8 @@
 # noNewLines.py  
 # A pre-processor to strip (1) whitespace and (2) newlines if given a text file.  
 # Useage:  enter PYTHON3 FILESPITTER.PY <f8oehaje> <word that identifies which lines to keep.>
+# Infile.txt can be any text file
+# Outfile.txt will be a monoline, with no tabs or spaces
 # by Evan Genest twitter@mistergenest Oct 10, 2017
 
 
@@ -11,25 +13,25 @@ import sys 	# Allows argv? DeFINitely allows sys.exit
 import re # allows RegEx
 
 #  FUNCTION *asker*
-def asker():
+def starting():
 	temp = ""
 	maxLine = ""
 	searchTerm = ""
 	if ( len(sys.argv) == 1 ): # user entered not even a file name
 		print('Please enter a file name from the command line and try again.')
 		sys.exit()
-	#  Ask for input: line size?
-	print('Reject lines longer than? (Recommended is 160.)')
-	while ( False == maxLine.isnumeric() ):
-		maxLine = input()
-		if ( False == maxLine.isnumeric()  ):
-			print("Please enter an integer")
-	print('Search term? (Lines will only be copied if they include this term.)')
-	while ( "" == searchTerm ):
-		searchTerm = input()
-		if (  "" == searchTerm   ):
-			print("Please enter a search term.")
-	return maxLine, searchTerm
+	# #  Ask for input: line size?
+	# print('Reject lines longer than? (Recommended is 160.)')
+	# while ( False == maxLine.isnumeric() ):
+	# 	maxLine = input()
+	# 	if ( False == maxLine.isnumeric()  ):
+	# 		print("Please enter an integer")
+	# print('Search term? (Lines will only be copied if they include this term.)')
+	# while ( "" == searchTerm ):
+	# 	searchTerm = input()
+	# 	if (  "" == searchTerm   ):
+	# 		print("Please enter a search term.")
+	return 
 # END ASKER FUNCTION
 #   *ASKER* GETS INPUT FROM USERS THAT ENTERED NO FILE OR NO SEARCH TERM
 
@@ -46,19 +48,11 @@ showsNumbers = False # enter debug mode
 # END DECLARE
 
 # MAIN - CHECK COMMAND LINE, THEN OPEN R, W FILES
-if ( (len(sys.argv) >4)  and (sys.argv[4].lower() == 'w')  ):
-	showsWords = True
-if ( (len(sys.argv) >4)  and (sys.argv[4].lower() == 'n')  ):
-	showsNumbers = True
-if len(sys.argv) > 1:
-	fileToOpen = sys.argv[1]
-if len(sys.argv) > 2:
-	criticalString = sys.argv[2]
-if len(sys.argv) > 3:
-	biggestLineWanted = int(sys.argv[3])
-if len(sys.argv) < 3:
-	biggestLineWanted, criticalString = asker()
+
+starting()
 FOUT = open ('a.txt', 'w')
+fileToOpen = sys.argv[1]
+print('Opening ', fileToOpen)
 try:
 	FIN = open( fileToOpen, 'r')
 except:
@@ -76,27 +70,9 @@ shiboleth = re.compile(criticalString) # make the regEx
 # The above regEx will test the line
 
 #read lines from the file, check vs RegEx ('SHIBOLETH'), then write to FOUT
-print("Will include any lines from file [", fileToOpen, "]")
-print("that include the search term [", criticalString, "]")
-print("and are smaller than [", biggestLineWanted, "] characters.")
+print("Now opening ", fileToOpen)
 
-"""     JUST CHECKS LENGTHS
-while True:
-	furrow = FIN.readline()
-	if ( '' == furrow ):
-		break
-	countRead += 1
-	if  	(len(furrow) <  int(biggestLineWanted )  ): 
-		countWrite += 1
-		FOUT.write(furrow)
-		if (showsNumbers): #debug mode
-			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
-			print( "success!")
-	else:
-		if (showsNumbers):
-			print("line size is ", len(furrow), " comparing it versus ", biggestLineWanted )
-			print("rejection.")
-"""
+
 wordFound = False
 lengthOkay = False
 
