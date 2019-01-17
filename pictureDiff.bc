@@ -1,0 +1,11 @@
+criteria rules-based;
+
+load "D:\Test\Folder1" "D:\Test\Folder2";
+
+expand all;
+
+folder-report layout:side-by-side &
+
+options:display-all,include-file-links &
+
+output-to:D:\Test\BatchFolderCompareReport.html output-options:html-color
