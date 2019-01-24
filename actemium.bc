@@ -1,0 +1,5 @@
+log verbose append:"/home/runtime/bc.log"
+criteria timestamp:2sec size
+load %1 %2
+expand all
+folder-report layout:xml output-to:%3
