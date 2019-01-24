@@ -1,4 +1,4 @@
-log verbose append:%3
+log verbose append:%4
 criteria timestamp:2sec size
 load %1 %2
 expand all
