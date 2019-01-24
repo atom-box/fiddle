@@ -1,4 +1,4 @@
-log verbose append:"/home/runtime/bc.log"
+log verbose append:%3
 criteria timestamp:2sec size
 load %1 %2
 expand all
