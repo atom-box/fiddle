@@ -1,21 +1,22 @@
+# Every line with a pound sign at the start is a comment
+
 # This is a script for Beyond Compare to move old files.
 # Any file older than 1 year will be deleted from the left and added to the right drive
-# an optional log file: myLog.txt
 
-# Turn verbose logging on. Notice the APPEND flag.  
-# This will concatenate the new report onto the old one
 # After reaching the maximum size, the old log lines will start rolling off, as a queue
-log verbose append:C:\Users\egenest\horse\myLog.txt
+log normal append:C:\Users\egenest\horse\myLog.txt #TODO
 
-# filter by maxTime
-filter cutoff:>365
+# filter set to ignore files less than this many days old
+filter cutoff:>365days
 
 # Load source and target folders.
-load C:\Users\egenest\horse C:\Users\egenest\myDestination
+load C:\Users\egenest\horse C:\Users\egenest\myDestination  #TODO
 
-# move 
-move left->right
+# Crucial line I always forget
+select left
 
+# Erase on left, add to right
+move left->right   
 
 
 #################################
@@ -25,3 +26,17 @@ move left->right
 # https://www.scootersoftware.com/v4help/index.html?scripting_reference.html
 #                               #
 #################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
