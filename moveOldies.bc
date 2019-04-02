@@ -12,8 +12,11 @@ filter cutoff:>365days
 # Load source and target folders.
 load C:\Users\egenest\horse C:\Users\egenest\myDestination  #TODO
 
-# Crucial line I always forget
-select left
+expand all
+
+# Crucial line -- if you say SELECT LEFT, the entire folder will get dragged over, even newer files 
+select all.files
+
 
 # Erase on left, add to right
 move left->right   
