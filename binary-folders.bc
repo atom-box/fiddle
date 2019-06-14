@@ -1,0 +1,4 @@
+load "%1" "%2"
+expand all
+criteria binary
+folder-report layout:side-by-side options:display-mismatches  output-to:C:\Users\egenest\horse\myLog.txt
