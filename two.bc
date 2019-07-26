@@ -1,0 +1,5 @@
+
+load  "C:\Users\egenest\ohio\folder COMPARE" "C:\Users\egenest\ohio\empty-lonely-place"
+sync mirror:left->right
+
+# C:\Users\egenest\ohio>BComp.exe @fiveThread.bc  

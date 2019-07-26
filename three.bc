@@ -1,0 +1,6 @@
+
+load  C:\Users\egenest\ohio\scOOOtr  "C:\Users\egenest\ohio\empty-lonely-place"
+sync mirror:left->right
+
+
+# C:\Users\egenest\ohio>BComp.exe @fiveThread.bc  
