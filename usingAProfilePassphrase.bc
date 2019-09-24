@@ -1,0 +1,12 @@
+# The exact format depends on your regional and language settings.
+log verbose append:"C:\horse\log.txt"
+
+# Compare the text contents of the files.
+criteria rules-based
+
+
+load "profile:backCloset-server-at-work?C.A.R.E.-222" "profile:back closet Scooter?old1"
+
+folder-report layout:summary &
+ options:display-mismatches,column-attributes,column-timestamp,column-size &
+ output-to:"C:\horse\tuesdayResults.txt"
