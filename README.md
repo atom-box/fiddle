@@ -1,5 +1,5 @@
 # Scripts
-Everything here runs from the command line.  They are a miscellany of utilities that I wrote to solve a particular problem and, admittedly, hardly ever remember to reuse.
+Everything here runs from the command line.  They are a miscellany of utilities that I wrote to solve a particular problem.
 
 ## Python 
 There are a couple short Python scripts here that take in baseball statistics.
