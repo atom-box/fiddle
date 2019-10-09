@@ -9,9 +9,10 @@ echo ":::::::::::"
 date
 
 # PRINT READOUT OF LEADING SPACES, rest OF LINE REMOVED
-sed 's_\ _=_g' $1 
+sed 's_^\([ ]*\)\(.*\)_\2_' $1 
 
 # in one line grab leading spaces CAPTURE OTROS CHARS. count LEADINGS
 # calculation: FACTOR,  EXISTINGSPACES,  OUTSPACES
 # loop BUILD A STRING OF APPROPRIATE NUMBER OF SPACES
 # outline the SPACESSTRING and the CAPTUREDSTRING
+
