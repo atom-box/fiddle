@@ -9,4 +9,4 @@ echo ":::::::::::"
 date
 
 # PRINT READOUT OF LEADING SPACES, rest OF LINE REMOVED
-sed $1 
+sed 's_[0-9]_=_g' $1 
