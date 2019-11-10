@@ -1,0 +1,1 @@
+sed 's_\([A-z]\{1,11\}\).*_\1_' thousandNouns.csv | sort | uniq
