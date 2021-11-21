@@ -1,8 +1,11 @@
+This repository has a few dozen unrelated files. They are utilities I wrote and coding challenges I solved for practice.  
+
 ## Python 
-There are a couple short Python scripts here that take in baseball statistics.
+A few Python scripts here take in baseball statistics.  
+A few others are coding challenge solutions.  File extension is __.py__  
 
 ## BASH
-SED and TR
+These are mostly SED and TR pipelines.  File extension is __.sh__  
 
 ## Beyond Compare
-Scripts that run on the file tool [Beyond Compare](www.scootersoftware.com).  This program if you don't know it is a real Swiss Army Knife in the terminal.  
+Beyond Compare is a visual diff tool.  It also is a file sync tool.  These scripts are proprietary instructions for the latter.  File extension is __.bc__
